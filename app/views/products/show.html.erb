@@ -1,0 +1,43 @@
+<div class ="contents row">
+  <div class="content_post" style="background-image: url(<%= @product.image %>);">
+    <% if user_signed_in? && current_user.id == @product.user_id %>
+      <div class="more">
+        <span><%= image_tag 'arrow_top.png' %></span>
+      <ul class="more_list">
+        <li>
+          <%= link_to '編集', "/products/#{@product.id}/edit", method: :get %>
+        </li>
+        <li>
+          <%= link_to '削除', "/products/#{@product.id}", method: :delete %>
+        </li>
+      </ul>
+    </div>
+    <% end %>
+    <%= simple_format(@product.text) %>
+    <span class="name">
+      <a href="/users/<%= @product.user.id %>">
+        <span>投稿者</span><%= @product.user.nickname %>
+      </a>
+    </span>
+  </div>
+  <div class="container">
+    <!-- ここからフォーム -->
+    <% if current_user %>
+      <%= form_tag("/products/#{@product.id}/reviews", method: :post) do %>
+        <textarea cols="30" name="review" placeholder="コメントする" rows="2"></textarea>
+        <input type="submit" value="SENT">
+      <% end %>
+    <% end %>
+    <div class="reviews">
+      <h4>＜コメント一覧＞</h4>
+      <% if @reviews %>
+        <% @reviews.each do |review| %>
+          <p>
+            <strong><%= link_to review.user.nickname, "/users/#{review.user_id}" %>：</strong>
+            <%= review.review %>
+          </p>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

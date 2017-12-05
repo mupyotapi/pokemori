@@ -1,0 +1,24 @@
+<div class="content_post" style="background-image: url(<%= product.image %>);">
+  <div class="more">
+    <span><%= image_tag 'arrow_top.png' %></span>
+    <ul class="more_list">
+      <li>
+      <%= link_to '詳細', "/products/#{product.id}", method: :get %>
+      </li>
+      <% if user_signed_in? && current_user.id == product.user_id %>
+        <li>
+          <%= link_to '編集', "/products/#{product.id}/edit", method: :get %>
+        </li>
+        <li>
+          <%= link_to '削除', "/products/#{product.id}", method: :delete %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <%= simple_format(product.text) %>
+  <span class="name">
+    <a href="">
+      <span>投稿者</span><%= product.user.nickname %>
+    </a>
+  </span>
+</div>ß
