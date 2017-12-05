@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
     end
 
     def create
-      Product.create(product_params)
+      Product.create(name: product_params[:name], image: product_params[:image], text: product_params[:text], user_id: current_user.id)
     end
 
     private
