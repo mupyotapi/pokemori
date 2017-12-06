@@ -1,6 +1,6 @@
 <div class="content_post" style="background-image: url(<%= product.image %>);">
   <div class="more">
-    <span><%= image_tag 'arrow_top.png' %></span>
+    <p><%= image_tag @product.image_tag%></p>
     <ul class="more_list">
       <li>
       <%= link_to '詳細', "/products/#{product.id}", method: :get %>

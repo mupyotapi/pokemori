@@ -1,11 +1,7 @@
-  <div class="contents row">
-    <%= form_tag("/products/#{@product.id}", method: :patch ) do %>
-      <h3>
-        編集する
-      </h3>
-      <input placeholder= <%= @product.roomname %> type="text" name="roomname">
-      <input placeholder="Image Url" type="text" name="image" value="<%= @product.image %>" autofocus="true">
-      <textarea cols="30" name="text" placeholder="text" rows="10"><%= @product.text %></textarea>
-      <input type="submit" value="SENT">
-    <% end %>
-  </div>
+<h1>Editing Product</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Show', @Product %> |
+<%= link_to 'Back', products_path %>
+

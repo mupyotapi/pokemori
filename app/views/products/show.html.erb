@@ -41,3 +41,20 @@
     </div>
   </div>
 </div>
+
+
+<p><%= image_tag @product.image_url %></p>
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @product.name %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @product.text %>
+</p>
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
