@@ -1,7 +1,8 @@
 <div class="content_post" style="background-image: url(<%= product.image %>);">
   <div class="more">
-    <p><%= image_tag @product.image_tag%></p>
-    <ul class="more_list">
+
+  </div>
+   <ul class="more_list">
       <li>
       <%= link_to '詳細', "/products/#{product.id}", method: :get %>
       </li>
@@ -14,11 +15,11 @@
         </li>
       <% end %>
     </ul>
-  </div>
+
   <%= simple_format(product.text) %>
   <span class="name">
     <a href="">
       <span>投稿者</span><%= product.user.nickname %>
     </a>
   </span>
-</div>ß
+</div>

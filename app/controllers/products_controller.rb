@@ -11,12 +11,36 @@ class ProductsController < ApplicationController
     end
 
     def create
-      Product.create(roomname: product_params[:roomname], image: product_params[:image], text: product_params[:text], user_id: current_user.id)
+    # @product = Product.new(product_params,user_id: current_user.id)
+
+    # respond_to do |format|
+    #   if @product.save
+    #     format.html { redirect_to @product, notice: 'Post was successfully created.' }
+    #     format.json { render :show, status: :created, location: @product }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @product.errors, status: :unprocessable_entity }
+    #   end
+    # end
+
+
+      @product = Product.create(roomname: product_params[:roomname], image: product_params[:image], text: product_params[:text], user_id: current_user.id)
+
+      # respond_to do |format|
+      #   if @product.save
+      #     format.html { redirect_to @product, notice: 'Post was successfully created.' }
+      #     format.json { render :show, status: :created, location: @product }
+      #   else
+      #     format.html { render :new }
+      #     format.json { render json: @product.errors, status: :unprocessable_entity }
+      #   end
+      # end
     end
 
     def destroy
       product = Product.find(params[:id])
       product.destroy if product.user_id == current_user.id
+
     end
 
     def edit
@@ -28,6 +52,16 @@ class ProductsController < ApplicationController
       if product.user_id == current_user.id
         product.update(product_params)
       end
+
+      respond_to do |format|
+        if @product.update(product_params)
+          format.html { redirect_to @product, notice: 'Post was successfully updated.' }
+          format.json { render :show, status: :ok, location: @product }
+        else
+          format.html { render :edit }
+          format.json { render json: @product.errors, status: :unprocessable_entity }
+        end
+      end
     end
 
     def show
@@ -36,9 +70,12 @@ class ProductsController < ApplicationController
     end
 
     private
+    # def product_params
+    #   params.permit(:roomname, :image, :text)
+    # end
+
     def product_params
-      params.permit(:roomname, :image, :text)
-      # params.permit(:roomname, :image, :username, :usernumber, :text)
+      params.require(:product).permit(:roomname, :text, :image)
     end
 
     def move_to_index
