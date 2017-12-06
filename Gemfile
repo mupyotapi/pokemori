@@ -49,3 +49,8 @@ gem 'pry-rails'
 gem 'sprockets', '2.11.0'
 gem 'kaminari'
 gem 'devise'
+
+## twitter api 関連 ##
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
