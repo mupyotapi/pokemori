@@ -53,15 +53,6 @@ line-height: 1.57;
   margin: 0;
 }
 
-a {
-  text-decoration: none;
-  color: $dark;
-  @extend .transition;
-  &:hover {
-    color: $accent;
-  }
-}
-
 .bold {
   font-weight: bold;
 }
