@@ -25,7 +25,7 @@
   <div id="wrapper">
      <header class="header">
       <div class="header__bar row">
-        <h1 class="grid-6"><a href="/">Pokemori</a></h1>
+        <h1 class="grid-6"><a href="/">Pokemoroom</a></h1>
         <% if user_signed_in? %>
           <div class="user_nav grid-6">
             <span><%= current_user.nickname %>
@@ -42,7 +42,6 @@
         <div class="grid-6">
           <%= link_to "ログイン", new_user_session_path, class: 'post' %>
           <%= link_to "新規登録", new_user_registration_path, class: 'post' %>
-          <%= link_to "Twitter", user_twitter_omniauth_authorize_path %>
 
         </div>
       <% end %>
