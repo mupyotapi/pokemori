@@ -1,4 +1,4 @@
-class ProductsController < ApplicationController
+class ProductsController < RankingController
 
     before_action :move_to_index, except: :index
 
@@ -8,6 +8,7 @@ class ProductsController < ApplicationController
 
     def new
       @product = Product.new
+      @review = Review.new
     end
 
     def create
@@ -67,6 +68,7 @@ class ProductsController < ApplicationController
     def show
     @product = Product.find(params[:id])
     @reviews = @product.reviews.includes(:user)
+    @review = Review.new
     end
 
     private

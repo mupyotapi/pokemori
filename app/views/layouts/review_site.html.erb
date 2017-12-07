@@ -21,8 +21,9 @@
     </script>
   </head>
 
-  <body>
-    <header class="header">
+<body class="yj950-2">
+  <div id="wrapper">
+     <header class="header">
       <div class="header__bar row">
         <h1 class="grid-6"><a href="/">Pokemori</a></h1>
         <% if user_signed_in? %>
@@ -41,21 +42,52 @@
         <div class="grid-6">
           <%= link_to "ログイン", new_user_session_path, class: 'post' %>
           <%= link_to "新規登録", new_user_registration_path, class: 'post' %>
-          <%= link_to "Sign in with Twitter", user_twitter_omniauth_authorize_path %>
+          <%= link_to "Twitter", user_twitter_omniauth_authorize_path %>
 
         </div>
       <% end %>
       </div>
     </header>
+    <div class="bgcolor-white pt1em pb1em" id="contents">
 
-    <%= yield %>
+      <%= yield %>
 
-    <footer>
-      <p>
-        どうぶつの森みんなのお部屋2017
-      </p>
-    </footer>
-  </body>
+      <aside class="section">
+        <h4 class="text-small hr-bottom--thin no-space-bottom">
+          <i class="icon-crown color-gray-light"></i>人気ランキング
+        </h4>
+        <ul class="listview listview--condensed text-small">
+          <% @ranking.each.with_index(1) do |product, i| %>
+          <li data-cinema-id="346394">
+            <a href="/products/<%= product.id %>">
+              <div class="box">
+                <div class="box__cell w40 align-center">
+                  <p class="label bgcolor-gray-lighter align-center">
+                    <%= i %>
+                  </p>
+                </div>
+                <div class="box__cell pl1em">
+                  <p class="text-xsmall no-space">
+                    <%= product.roomname %>
+                  </p>
+                  <img src="<%= product.image_url %>" alt="">
+                </div>
+              </div>
+            </a>
+          </li>
+          <% end %>
+        </ul>
+      </aside>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="copyright">
+  どうぶつの森みんなのお部屋2017
+  <!-- Copyright (C) 2015  XXX Corporation. All Rights Reserved. -->
+</div>
+</div>
+</div>
+</body>
 </html>
-
-

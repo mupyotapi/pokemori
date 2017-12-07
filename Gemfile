@@ -56,3 +56,7 @@ gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 
 gem 'carrierwave'
+
+group :production do
+  gem 'rails_12factor'
+end
